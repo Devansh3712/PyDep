@@ -1,3 +1,8 @@
+'''
+command-line interface
+for PyDep
+'''
+
 import click
 import os
 import platform
@@ -10,13 +15,14 @@ def pydep():
 def dependency():
     "Create requirements.txt file for the project, if virtual environment is activated"
 
+    #if project has a virtual environment
     if os.getenv('VIRTUAL_ENV'):
 
         if platform.system() == 'Windows':
-            os.system('cmd \c "pip freeze > requirements.txt"')
+            os.system('pip freeze > requirements.txt')
 
         else:
-            os.system('cmd \c "pip3 freeze > requirements.txt"')
+            os.system('pip3 freeze > requirements.txt')
 
         print("requirements.txt file created successfully")
 
@@ -31,21 +37,22 @@ def pyproject():
     try:
         
         if platform.system() == 'Windows':
-            os.system('cmd \c "pip install poetry"')
+            os.system('pip install poetry')
 
         else:
-            os.system('cmd \c "pip3 install poetry"')
+            os.system('pip3 install poetry')
 
     except:
 
         pass
 
-    os.system('cmd \k "poetry init"')
+    os.system('poetry init')
 
 @pydep.command()
 def convert():
     "Create poetry.lock dependency file from requirements.txt"
 
+    #if requirements.txt file is present
     if os.path.isfile("./requirements.txt"):
 
         file = open("requirements.txt", "r", encoding = 'utf-8')
@@ -57,12 +64,17 @@ def convert():
 
         else:
 
+            #add each module in poetry.lock file
             for module in modules:
 
                 module = module.replace("\x00", "")
                 dependency = module.partition('==')
 
-                os.system(f'cmd \c "poetry add {dependency[0]}"')
+                os.system(f'poetry add {dependency[0]}')
+
+    else:
+
+        print("requirements.txt file not found")
 
 if __name__ == "__main__":
     pydep(prog_name = "pydep")
