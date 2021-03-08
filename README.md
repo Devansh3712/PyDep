@@ -57,6 +57,7 @@ Options:
 Commands:
   convert     Create poetry.lock dependency file from requirements.txt
   dependency  Create requirements.txt file for the project, if virtual...
+  info        Information about PyDep project
   pyproject   Create pyproject.toml file for the project
   ```
 
