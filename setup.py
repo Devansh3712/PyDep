@@ -6,8 +6,8 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
   
 setup( 
-        name = 'pydep',
-        version = '0.1.0',
+        name = 'pydep-cli',
+        version = '0.1.1',
         author = 'Devansh Singh', 
         author_email = 'devanshamity@gmail.com', 
         url = 'https://github.com/Devansh3712/PyDep', 

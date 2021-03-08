@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pydep"
-version = "0.1.0"
+version = "0.1.1"
 description = "Create pyproject.toml & poetry.lock files from requirements.txt"
 authors = ["Devansh3712 <devanshamity@gmail.com>"]
 license = "MIT"
